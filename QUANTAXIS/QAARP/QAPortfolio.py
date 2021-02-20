@@ -2,7 +2,7 @@
 #
 # The MIT License (MIT)
 #
-# Copyright (c) 2016-2020 yutiansut/QUANTAXIS
+# Copyright (c) 2016-2021 yutiansut/QUANTAXIS
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -745,7 +745,7 @@ class QA_PortfolioView():
     def start_date(self):
         return str(
             pd.to_datetime(
-                pd.Series([account.start_date for account in self.accounts])
+                pd.Series([account.start_date for account in self.accounts]), utc=False
             ).min()
         )[0:10]
 
@@ -753,7 +753,7 @@ class QA_PortfolioView():
     def end_date(self):
         return str(
             pd.to_datetime(
-                pd.Series([account.end_date for account in self.accounts])
+                pd.Series([account.end_date for account in self.accounts]), utc=False
             ).max()
         )[0:10]
 
